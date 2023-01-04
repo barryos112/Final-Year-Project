@@ -1,0 +1,69 @@
+.player__card {
+    width: 250px;
+    height: 374px;
+    border-radius: 0;
+    overflow: hidden;
+    margin: 10px 25px;
+  }
+  
+  .player__note:hover {
+    cursor: pointer;
+  }
+  
+  .player__card:hover {
+    cursor: pointer;
+  }
+  
+  .player__cover {
+    height: 228px;
+    background-color: #e6fffb;
+  }
+  
+  .player__header {
+    background-color: #13c2c2;
+    color: white;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    height: 28px;
+    text-align: center;
+  }
+  
+  .player__empty-header {
+    height: 28px;
+  }
+  
+  .player__calc-bg {
+    background-color: #f6ffed;
+  }
+  
+  .player__icon .anticon {
+    font-size: 130px;
+    color: #262626;
+  }
+  
+  .player__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 28px);
+  }
+  
+  .player__content-title {
+    font-size: 16px;
+    line-height: 24px;
+    color: #262626;
+    font-weight: 600;
+    margin-bottom: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .player__content-body {
+    color: #8c8c8c;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }

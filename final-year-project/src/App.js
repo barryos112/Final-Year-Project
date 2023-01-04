@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import PlayerCardContainer from "./Containers/PlayerCardContainer/PlayerCardContainer";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import LandingPage from "./LandingPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <div className="App">
+          <Routes>
+            <Route exact path="/home" component={LandingPage} />
+          </Routes>
+
+          {/* <PlayerCardContainer
+            playerName={"Barry O'Sullivan"}
+            description={"This is my test player card"}
+            currentWeekPoints={"10"}
+            totalPointsToDate={"42 points"}
+          /> */}
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 
