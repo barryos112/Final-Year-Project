@@ -1,28 +1,22 @@
-import logo from "./logo.svg";
-import "./App.css";
-import PlayerCardContainer from "./Containers/PlayerCardContainer/PlayerCardContainer";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import LandingPage from "./LandingPage";
+// import React from 'react';
 
-function App() {
-  return (
-    <>
-      <BrowserRouter>
-        <div className="App">
-          <Routes>
-            <Route exact path="/home" component={LandingPage} />
-          </Routes>
+// import logo from "./logo.svg";
+// import "./App.css";
+// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-          {/* <PlayerCardContainer
-            playerName={"Barry O'Sullivan"}
-            description={"This is my test player card"}
-            currentWeekPoints={"10"}
-            totalPointsToDate={"42 points"}
-          /> */}
-        </div>
-      </BrowserRouter>
-    </>
-  );
-}
+// function App() {
+//   return (
+//     <Router>
+//       <nav>
+//           <Link to="/">Home</Link>
+//           <Link to="/about">About</Link>
+//           <Link to="/contact">Contact</Link>
+//       </nav>
+//       <Route exact path="/" component={HomePage} />
+//       <Route path="/about" component={AboutPage} />
+//       <Route path="/contact" component={ContactPage} />
+//     </Router>
+//   );
+// }
 
 export default App;
