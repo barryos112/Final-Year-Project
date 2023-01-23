@@ -1,0 +1,39 @@
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-page-header {
+    width: 100%;
+    background-color: #6CA0DC;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .home-page-body {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .join-button {
+    background-color: #6CA0DC;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .join-button:hover {
+    background-color: #4D7B9D;
+  }
+  
+  
+ .bg{
+  background-size: cover;
+	background-position: top center;
+ }
