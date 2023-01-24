@@ -1,73 +1,32 @@
 import React from "react";
 
 import "./landing_page.css";
+import Card from "react-bootstrap/Card";
 
 const Home = () => {
   return (
-    <div className="home-page-container">
-      <div className="home-page-header">
-        <h1>Welcome to the future of Fantasy Sports</h1>
-      </div>
-      <div className="home-page-body">
-        <button className="join-button">Join a League</button>
+    <div className="card">
+      <Card style={{ width: "18rem" }}>
+        {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+        <Card.Body>
+          <Card.Title>Card Title</Card.Title>
+          <Card.Text>
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
+      <div className="home-page-container">
+        <div className="home-page-header">
+          <h1>Welcome to the future of Fantasy Sports</h1>
+        </div>
+        <div className="home-page-body">
+          <button className="join-button">Join a League</button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Home;
-
-// import React, { useState } from "react";
-// import "./landing_page.css";
-// import {
-//   Navbar,
-//   Nav,
-//   Carousel,
-//   Form,
-//   FormControl,
-//   Button,
-// } from "react-bootstrap";
-
-// const Home = () => {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     // Send email and password to server for sign-up
-//     console.log(`Email: ${email}, Password: ${password}`);
-//   };
-
-//   return (
-//     <div className="landing-page-container">
-
-//       <Navbar bg="light" expand="lg">
-//         <Navbar.Brand href="#home">My Fantasy Sports Website</Navbar.Brand>
-//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//         <Navbar.Collapse id="basic-navbar-nav">
-//           <Nav className="mr-auto">
-//             <Nav.Link href="#home">Home</Nav.Link>
-//             <Nav.Link href="#link">Link</Nav.Link>
-//           </Nav>
-//           <Form inline>
-//             <FormControl
-//               type="email"
-//               placeholder="Email"
-//               className="mr-sm-2"
-//               onChange={(e) => setEmail(e.target.value)}
-//             />
-//             <FormControl
-//               type="password"
-//               placeholder="Password"
-//               className="mr-sm-2"
-//               onChange={(e) => setPassword(e.target.value)}
-//             />
-//             <Button variant="outline-success" onClick={handleSubmit}>
-//               Sign Up
-//             </Button>
-//           </Form>
-//         </Navbar.Collapse>
-//       </Navbar>
-//     </div>
-//   );
-// };
