@@ -9,7 +9,6 @@ const Home = () => {
         <h1>Welcome to the future of Fantasy Sports</h1>
       </div>
       <div className="home-page-body">
-        <p>Join a league and compete against friends and other players.</p>
         <button className="join-button">Join a League</button>
       </div>
     </div>
