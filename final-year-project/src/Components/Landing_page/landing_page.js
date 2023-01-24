@@ -1,16 +1,12 @@
 import React from "react";
 
 import "./landing_page.css";
-import bg from "../Landing_page/ProjectBG.jpg";
 
 const Home = () => {
   return (
     <div className="home-page-container">
-      <div className="bg">
-        <img src={bg} width="1000" height="500" />
-      </div>
       <div className="home-page-header">
-        <h1>Welcome to the Fantasy Sports Website</h1>
+        <h1>Welcome to the future of Fantasy Sports</h1>
       </div>
       <div className="home-page-body">
         <p>Join a league and compete against friends and other players.</p>
