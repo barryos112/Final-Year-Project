@@ -40,3 +40,18 @@
   background-size: cover;
 	background-position: top center;
  }
+
+ .card {
+  width: 30%;
+  height: 200px;
+  margin-right: 1%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.card-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
