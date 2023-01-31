@@ -3,8 +3,10 @@
     flex-direction: column;
     align-items: center;
     background-image: url("../Landing_page/ProjectBG.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    position: relative;
   }
   
   .home-page-header {
@@ -41,17 +43,27 @@
 	background-position: top center;
  }
 
- .card {
-  width: 30%;
-  height: 200px;
-  margin-right: 1%;
-  display: inline-block;
-  vertical-align: top;
+ .card-container {
+  width: 80%;
+  height: 70vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.card-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
+
+
+ .card-outer {
+  height: 100%;
+  min-width: 30%;
+  margin: 0px 5px 0px 5px;
+}
+
+.card-inner {
+  height: 100% !important;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  z-index: 1;  /* Displays on top of the background image */
 }
