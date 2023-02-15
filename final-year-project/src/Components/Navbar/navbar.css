@@ -1,0 +1,35 @@
+nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: linear-gradient(to left, #4B0082, #9400D3)!important; /* Set the gradient colors and direction */
+    height: 70px !important;
+}
+  
+  nav ul {
+    display: flex !important;
+    align-items: center !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  nav ul li {
+    margin-right: 20px !important;
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0 !important;
+  }
+  
+  nav ul li a {
+    text-decoration: none !important;
+    color: #343a40 !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+  
+  nav ul li a:hover {
+    color: #007bff !important;
+  }

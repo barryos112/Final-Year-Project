@@ -4,12 +4,12 @@ import PlayerCardContainer from "../../Containers/PlayerCardContainer/PlayerCard
 function Home() {
   const myTeam = [
     {
-      playerName: "Alice OSullivan",
-      description: "The best player",
+      playerName: "",
+      description: "Test",
     },
     {
-      playerName: "Barry OSullivan",
-      description: "Not the best player :(",
+      playerName: "",
+      description: "Test",
     },
   ];
 

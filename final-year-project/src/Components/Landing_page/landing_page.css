@@ -8,14 +8,17 @@
     height: 100vh;
     position: relative;
   }
-  
   .home-page-header {
-    width: 100%;
-    background-color: #6CA0DC;
-    color: white;
-    text-align: center;
-    padding: 20px;
+    /* background-color: #007bff; Change the background color to match the navbar */
+    color: #fff; /* Change the font color to white */
+    display: flex; /* Use flexbox to align the content */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    height: 70px; /* Set the height to match the navbar */
+    padding: 0 20px; /* Add some padding to the left and right */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to give it depth */
   }
+
   
   .home-page-body {
     width: 100%;
