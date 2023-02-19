@@ -1,0 +1,32 @@
+.team-container {
+    display: flex;
+    flex-direction: wrap !important;
+    flex-wrap: wrap !important;
+    align-items: center;
+    background-image: url("../Landing_page/ProjectBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .card {
+    width: 300px !important;
+    margin: 10px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 5px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .card-header {
+    background-color: #f1f1f1 !important;
+    padding: 10px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+  }
+  
+  .card-body {
+    padding: 10px !important;
+    text-align: center !important;
+  }
+  
