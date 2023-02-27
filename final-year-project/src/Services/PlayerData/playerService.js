@@ -48,6 +48,12 @@ export const getPlayerData = async () => {
     });
     const jsonData = await response.json();
     console.log(jsonData);
+
+    // how to load json data to firebase - something like this
+    //     const db = getDatabase();
+    // const dbRef = ref(db, "players");
+    //     set(dbRef, jsonData);
+
     return jsonData;
   } catch (error) {
     console.error(error);

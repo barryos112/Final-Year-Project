@@ -1,6 +1,7 @@
 import "./team_page.css";
 import PlayerService from "../../Services/PlayerData/playerService";
 import React, { useState, useEffect } from "react";
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 
 const Home = () => {
   const players = [
@@ -41,8 +42,10 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await PlayerService.getPlayerData();
+
       setPlayerData(data);
     };
+
     fetchData();
   }, []);
 
@@ -60,6 +63,14 @@ const Home = () => {
               </div>
             </div>
           ))}
+
+        <div className="card">
+          Empty card - select player
+          <div className="card-header">Select your player</div>
+          <div className="card-body">
+            <DropdownMenu>Select a player...</DropdownMenu>
+          </div>
+        </div>
       </div>
     </>
   );
