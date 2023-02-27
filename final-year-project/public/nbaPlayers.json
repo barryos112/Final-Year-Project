@@ -1,0 +1,120 @@
+[
+  {
+      "id": "1",
+      "name": "Nikola Jokic",
+      "team": "DEN",
+      "position": "C"
+    },
+  {
+    "id": "2",
+    "name": "Kevin Durant",
+    "team": "PHX",
+    "position": "PF"
+  },
+  {
+    "id": "3",
+    "name": "Joel Embiid",
+    "team": "PHI",
+    "position": "C"
+  },
+  {
+    "id": "4",
+    "name": "Stephen Curry",
+    "team": "GSW",
+    "position": "PG"
+  },
+  {
+    "id": "5",
+    "name": "Damian Lillard",
+    "team": "POR",
+    "position": "PG"
+  },
+  {
+    "id": "6",
+    "name": "Luka Doncic",
+    "team": "DAL",
+    "position": "PG"
+  },
+  {
+    "id": "7",
+    "name": "Jayson Tatum",
+    "team": "BOS",
+    "position": "SF"
+  },
+  {
+    "id": "8",
+    "name": "Kyrie Irving",
+    "team": "DAL",
+    "position": "PG"
+  },
+  {
+    "id": "9",
+    "name": "James Harden",
+    "team": "PHI",
+    "position": "SG"
+  },
+  {
+    "id": "10",
+    "name": "Donovan Mitchell",
+    "team": "CLE",
+    "position": "SG"
+  },
+  {
+    "id": "11",
+    "name": "Ja Morant",
+    "team": "MEM",
+    "position": "PG"
+  },
+  {
+    "id": "12",
+    "name": "Justin Jefferson",
+    "team": "MIN",
+    "position": "WR"
+  },
+  {
+    "id": "13",
+    "name": "Lebron James",
+    "team": "LAL",
+    "position": "PF"
+  },
+  {
+    "id": "14",
+    "name": "Justin Jefferson",
+    "team": "MIN",
+    "position": "WR"
+  },
+  {
+    "id": "15",
+    "name": "Kawhi Leonard",
+    "team": "LAC",
+    "position": "SF"
+  },
+  {
+    "id": "16",
+    "name": "Jimmy Butler",
+    "team": "MIA",
+    "position": "SF"
+  },
+  {
+    "id": "17",
+    "name": "Trae Young",
+    "team": "ATL",
+    "position": "PG"
+  },
+  {
+    "id": "18",
+    "name": "LaMelo Ball",
+    "team": "CHA",
+    "position": "PG"
+  },
+  {
+    "id": "19",
+    "name": "DeMar DeRozan",
+    "team": "CHI",
+    "position": "SF"
+  },   {
+      "id": "20",
+      "name": "Devin Booker",
+      "team": "PHX",
+      "position": "SG"
+    } ]

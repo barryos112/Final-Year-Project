@@ -27,7 +27,7 @@ const firebaseConfig = {
   messagingSenderId: "1037159617922",
   appId: "1:1037159617922:web:f40a90ce5f8f1edf76ab9b",
 };
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig); // TO DO move this
 
 const auth = getAuth();
 const db = getDatabase();

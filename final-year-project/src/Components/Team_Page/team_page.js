@@ -1,35 +1,6 @@
-// import React from "react";
-// import PlayerCardContainer from "../../Containers/PlayerCardContainer/PlayerCardContainer";
-
-// function Home() {
-//   const myTeam = [
-//     {
-//       playerName: "",
-//       description: "Test",
-//     },
-//     {
-//       playerName: "",
-//       description: "Test",
-//     },
-//   ];
-
-//   return (
-//     <div>
-//       {myTeam.map((player) => {
-//         return (
-//           <PlayerCardContainer
-//             playerName={player.playerName}
-//             description={player.description}
-//           />
-//         );
-//       })}
-//     </div>
-//   );
-// }
-// export default Home;
-
-import React from "react";
 import "./team_page.css";
+import PlayerService from "../../Services/PlayerData/playerService";
+import React, { useState, useEffect } from "react";
 
 const Home = () => {
   const players = [
@@ -65,18 +36,47 @@ const Home = () => {
     },
   ];
 
+  const [playerData, setPlayerData] = useState([]);
+
+  // const jsonData = PlayerService.loadJsonFile();
+  // console.log(jsonData);
+
+  const getData = () => {
+    fetch("./nbaPlayers.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then(function (response) {
+        console.log(response);
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson);
+        setPlayerData(myJson);
+      });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
-    <div className="team-container">
-      {players.map((player) => (
-        <div className="card" key={player.number}>
-          <div className="card-header">{player.name}</div>
-          <div className="card-body">
-            <p>Position: {player.position}</p>
-            <p>Number: {player.number}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="team-container">
+        {playerData &&
+          playerData.length > 0 &&
+          playerData.map((player) => (
+            <div className="card" key={player.id}>
+              <div className="card-header">{player.name}</div>
+              <div className="card-body">
+                <p>Team: {player.team}</p>
+                <p>Position: {player.position}</p>
+              </div>
+            </div>
+          ))}
+      </div>
+    </>
   );
 };
 

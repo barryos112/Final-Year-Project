@@ -1,9 +1,3 @@
-// import React from 'react';
-
-// import logo from "./logo.svg";
-// import "./App.css";
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "../../final-year-project/src/Components/Layout";
 import LandingPage from "../../final-year-project/src/Components/Landing_page/landing_page";
