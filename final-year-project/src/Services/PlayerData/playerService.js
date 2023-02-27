@@ -37,3 +37,24 @@
 //   loadJsonFile,
 // };
 // export default PlayerService;
+
+export const getPlayerData = async () => {
+  try {
+    const response = await fetch("./nbaPlayers.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const jsonData = await response.json();
+    console.log(jsonData);
+    return jsonData;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const PlayerService = {
+  getPlayerData,
+};
+export default PlayerService;

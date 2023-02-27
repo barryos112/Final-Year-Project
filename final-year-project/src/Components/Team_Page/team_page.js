@@ -38,27 +38,12 @@ const Home = () => {
 
   const [playerData, setPlayerData] = useState([]);
 
-  // const jsonData = PlayerService.loadJsonFile();
-  // console.log(jsonData);
-
-  const getData = () => {
-    fetch("./nbaPlayers.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(function (response) {
-        console.log(response);
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-        setPlayerData(myJson);
-      });
-  };
   useEffect(() => {
-    getData();
+    const fetchData = async () => {
+      const data = await PlayerService.getPlayerData();
+      setPlayerData(data);
+    };
+    fetchData();
   }, []);
 
   return (
