@@ -59,8 +59,43 @@ export const getPlayerData = async () => {
     console.error(error);
   }
 };
+export const getNFLData = async () => {
+  try {
+    const response = await fetch("./nflPlayers.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const jsonData = await response.json();
+    console.log(jsonData);
+
+    return jsonData;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getPremData = async () => {
+  try {
+    const response = await fetch("./premPlayers.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const jsonData = await response.json();
+    console.log(jsonData);
+
+    return jsonData;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const PlayerService = {
   getPlayerData,
+  getNFLData,
+  getPremData,
 };
 export default PlayerService;

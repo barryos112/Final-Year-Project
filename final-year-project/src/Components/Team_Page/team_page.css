@@ -29,4 +29,35 @@
     padding: 10px !important;
     text-align: center !important;
   }
+
+
+  .dropdown-container {
+    display: flex;
+  }
+  
+  .dropdown-nba {
+    width: 33.33%;
+  }
+  
+  .dropdown-nfl {
+    width: 33.33%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .dropdown-prem {
+    display: inline-block !important;
+    position: relative !important;
+  }
+  
+  .dropdown-prem .dropdown-menu {
+    position: absolute !important;
+    width: auto !important;
+    min-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .dropdown-prem .dropdown-item {
+    white-space: normal !important;
+  }
   
