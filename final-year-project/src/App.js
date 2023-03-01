@@ -10,6 +10,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route path="/" index element={<LandingPage />} />
+
           <Route path="home" index element={<LandingPage />} />
           <Route path="create-account" element={<AccountCreation />} />
           <Route path="select-sport" element={<SportSelection />} />

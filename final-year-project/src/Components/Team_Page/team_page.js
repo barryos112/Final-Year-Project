@@ -2,78 +2,18 @@ import "./team_page.css";
 import PlayerService from "../../Services/PlayerData/playerService";
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import { PlayerCard } from "../../Components/PlayerCard";
 
 const Home = () => {
-  //   const [playerData, setPlayerData] = useState([]);
-
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const data = await PlayerService.getPlayerData();
-
-  //       setPlayerData(data);
-  //     };
-
-  //     fetchData();
-  //   }, []);
-
-  //   return (
-  //     <>
-  //       <div className="dropdown-container">
-  //         <Dropdown className="dropdown-nba">
-  //           <Dropdown.Toggle variant="success" id="dropdown-basic">
-  //             Select an NBA player
-  //           </Dropdown.Toggle>
-
-  //           <Dropdown.Menu>
-  //             {playerData.map((player) => (
-  //               <Dropdown.Item key={player.id} eventKey={player.id}>
-  //                 {player.name}
-  //               </Dropdown.Item>
-  //             ))}
-  //           </Dropdown.Menu>
-  //         </Dropdown>
-
-  //         <Dropdown className="dropdown-nfl">
-  //           <Dropdown.Toggle variant="success" id="dropdown-basic">
-  //             Select an NFL player
-  //           </Dropdown.Toggle>
-
-  //           <Dropdown.Menu>
-  //             {playerData.map((player) => (
-  //               <Dropdown.Item key={player.id} eventKey={player.id}>
-  //                 {player.name}
-  //               </Dropdown.Item>
-  //             ))}
-  //           </Dropdown.Menu>
-  //         </Dropdown>
-
-  //         <Dropdown className="dropdown-prem">
-  //           <Dropdown.Toggle variant="success" id="dropdown-basic">
-  //             Select a Premier League player
-  //           </Dropdown.Toggle>
-
-  //           <Dropdown.Menu>
-  //             {playerData.map((player) => (
-  //               <Dropdown.Item key={player.id} eventKey={player.id}>
-  //                 {player.name}
-  //               </Dropdown.Item>
-  //             ))}
-  //           </Dropdown.Menu>
-  //         </Dropdown>
-  //       </div>
-
-  //       {/* </div> */}
-  //     </>
-  //   );
-  // };
-
-  const [playerData, setPlayerData] = useState([]);
+  const [nbaData, setPlayerData] = useState([]);
   const [nflData, setNflData] = useState([]);
   const [premData, setPremData] = useState([]);
 
+  const NUMBER_OF_PLAYERS = 6;
+
   useEffect(() => {
     const fetchData = async () => {
-      const nbaData = await PlayerService.getPlayerData();
+      const nbaData = await PlayerService.getNBAData();
       const nflData = await PlayerService.getNFLData();
       const premData = await PlayerService.getPremData();
 
@@ -85,50 +25,147 @@ const Home = () => {
     fetchData();
   }, []);
 
+  function Player(id, playerName, team, position) {
+    this.id = id;
+    this.name = playerName;
+    this.team = team;
+    this.position = position;
+  }
+
+  // Initialize an array of player objects
+  const players = [];
+  for (let i = 0; i < NUMBER_OF_PLAYERS; i++) {
+    const player = new Player(i + 1, `Player ${i + 1}`, "Team A", "Position A");
+    players.push(player);
+  }
+
+  const [playersSelected, setPlayersSelected] = useState(players);
   return (
     <>
-      <div className="dropdown-container">
-        <Dropdown className="dropdown-nba">
-          <Dropdown.Toggle variant="success" id="nba-dropdown">
-            NBA Players
-          </Dropdown.Toggle>
+      <div className="team-page">
+        <div className="dropdown-container">
+          <Dropdown
+            className="dropdown-nba"
+            onSelect={(playerIdSelected) => {
+              const playerSelected = nbaData.find(
+                (player) => player.id === playerIdSelected
+              );
+              const nextAvailableSlotIndex = playersSelected.findIndex(
+                (player) => String(player.name).includes("Player")
+              );
+              if (nextAvailableSlotIndex >= 0) {
+                let updatedPlayersSelected = [...playersSelected];
+                updatedPlayersSelected.splice(
+                  nextAvailableSlotIndex,
+                  1,
+                  playerSelected
+                );
+                setPlayersSelected(updatedPlayersSelected);
+              }
+            }}
+          >
+            <Dropdown.Toggle variant="success" id="nba-dropdown">
+              NBA Players
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            {playerData.map((player) => (
-              <Dropdown.Item key={player.id} eventKey={player.id}>
-                {player.name}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown.Menu>
+              {nbaData.map((player) => (
+                <Dropdown.Item key={player.id} eventKey={player.id}>
+                  {player.name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
 
-        <Dropdown className="dropdown-nfl">
-          <Dropdown.Toggle variant="success" id="nfl-dropdown">
-            NFL Players
-          </Dropdown.Toggle>
+          <Dropdown
+            className="dropdown-nfl"
+            onSelect={(playerIdSelected) => {
+              const playerSelected = nflData.find(
+                (player) => player.id === playerIdSelected
+              );
+              const nextAvailableSlotIndex = playersSelected.findIndex(
+                (player) => String(player.name).includes("Player")
+              );
+              if (nextAvailableSlotIndex >= 0) {
+                let updatedPlayersSelected = [...playersSelected];
+                updatedPlayersSelected.splice(
+                  nextAvailableSlotIndex,
+                  1,
+                  playerSelected
+                );
+                setPlayersSelected(updatedPlayersSelected);
+              }
+            }}
+          >
+            <Dropdown.Toggle variant="success" id="nfl-dropdown">
+              NFL Players
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            {nflData.map((player) => (
-              <Dropdown.Item key={player.id} eventKey={player.id}>
-                {player.name}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown.Menu>
+              {nflData.map((player) => (
+                <Dropdown.Item key={player.id} eventKey={player.id}>
+                  {player.name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
 
-        <Dropdown className="dropdown-prem">
-          <Dropdown.Toggle variant="success" id="prem-dropdown">
-            Premier League Players
-          </Dropdown.Toggle>
+          <Dropdown
+            className="dropdown-prem"
+            onSelect={(playerIdSelected) => {
+              const playerSelected = premData.find(
+                (player) => player.id === playerIdSelected
+              );
+              const nextAvailableSlotIndex = playersSelected.findIndex(
+                (player) => String(player.name).includes("Player")
+              );
+              if (nextAvailableSlotIndex >= 0) {
+                let updatedPlayersSelected = [...playersSelected];
+                updatedPlayersSelected.splice(
+                  nextAvailableSlotIndex,
+                  1,
+                  playerSelected
+                );
+                setPlayersSelected(updatedPlayersSelected);
+              }
+            }}
+          >
+            <Dropdown.Toggle variant="success" id="prem-dropdown">
+              Premier League Players
+            </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            {premData.map((player) => (
-              <Dropdown.Item key={player.id} eventKey={player.id}>
-                {player.name}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown.Menu>
+              {premData.map((player) => (
+                <Dropdown.Item key={player.id} eventKey={player.id}>
+                  {player.name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+        <div className="players-container">
+          {playersSelected.map((player, index) => (
+            <PlayerCard
+              playerName={player.name}
+              team={player.team}
+              position={player.position}
+              onClickRemove={() => {
+                console.log(index);
+                const playerPlaceholder = new Player(
+                  index + 1,
+                  `Player ${index + 1}`,
+                  "Team A",
+                  "Position A"
+                );
+
+                let updatedPlayersSelected = [...playersSelected];
+                updatedPlayersSelected.splice(index, 1, playerPlaceholder);
+                setPlayersSelected(updatedPlayersSelected);
+              }}
+            ></PlayerCard>
+          ))}
+        </div>
+        ;
       </div>
     </>
   );

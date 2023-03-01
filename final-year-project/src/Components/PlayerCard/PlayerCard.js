@@ -6,7 +6,9 @@ import Card from "react-bootstrap/Card";
 
 export const PlayerCard = ({
   playerName,
-  description,
+  team,
+  position,
+  onClickRemove,
   currentWeekPoints,
   totalPointsToDate,
   onCardClick,
@@ -46,8 +48,14 @@ export const PlayerCard = ({
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
         <Card.Title>{playerName}</Card.Title>
-        <Card.Text>{description}</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Text>{team}</Card.Text>
+        <Card.Text>{position}</Card.Text>
+
+        {!playerName.includes("Player ") && (
+          <Button variant="danger" onClick={onClickRemove}>
+            Remove Player
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );

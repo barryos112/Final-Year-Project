@@ -38,7 +38,7 @@
 // };
 // export default PlayerService;
 
-export const getPlayerData = async () => {
+export const getNBAData = async () => {
   try {
     const response = await fetch("./nbaPlayers.json", {
       headers: {
@@ -94,7 +94,7 @@ export const getPremData = async () => {
 };
 
 const PlayerService = {
-  getPlayerData,
+  getNBAData,
   getNFLData,
   getPremData,
 };
