@@ -3,7 +3,7 @@
     flex-direction: wrap !important;
     flex-wrap: wrap !important;
     align-items: center;
-    background-image: url("../Landing_page/ProjectBG.jpg");
+    background-image: url("../Landing_page/ProjectBG.jpg")!important;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -19,7 +19,7 @@
   }
   
   .card-header {
-    background-color: #f1f1f1 !important;
+    /* background-color: #f1f1f1 !important; */
     padding: 10px !important;
     font-weight: bold !important;
     text-align: center !important;
