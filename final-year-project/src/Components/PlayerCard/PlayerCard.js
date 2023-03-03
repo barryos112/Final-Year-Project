@@ -45,7 +45,6 @@ export const PlayerCard = ({
     // </Card>
 
     <Card className="player-card" style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
         <Card.Title>{playerName}</Card.Title>
         <Card.Text>{team}</Card.Text>

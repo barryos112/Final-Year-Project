@@ -16,21 +16,21 @@ const Home = () => {
         </Link>
       </div>
 
-      <div className="card-container">
-        <div className="card-outer">
-          <Card className="card-inner">
+      <div className="LP-card-container">
+        <div className="LP-card-outer">
+          <Card className="LP-card-inner">
             <Card.Title>Welcome</Card.Title>
             <Card.Text>Explain Main Rules</Card.Text>
           </Card>
         </div>
-        <div className="card-outer">
-          <Card className="card-inner">
+        <div className="LP-card-outer">
+          <Card className="LP-card-inner">
             <Card.Title>Next steps</Card.Title>
             <Card.Text>Create account pick team</Card.Text>
           </Card>
         </div>
-        <div className="card-outer">
-          <Card className="card-inner">
+        <div className="LP-card-outer">
+          <Card className="LP-card-inner">
             <Card.Title>Enjoy</Card.Title>
             <Card.Text>Play and challenge friends</Card.Text>
           </Card>

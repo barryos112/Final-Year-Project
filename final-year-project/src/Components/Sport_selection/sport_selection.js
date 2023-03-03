@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import { Link } from "react-router-dom";
 
 import "./sport_selection.css";
 function Home() {
@@ -66,6 +67,9 @@ function Home() {
               );
             })}
           </DropdownButton>
+          <Link to="/team">
+            <button>Confirm Choices</button>
+          </Link>
         </div>
       </div>
     </>
