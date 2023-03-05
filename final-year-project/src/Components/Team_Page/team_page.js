@@ -3,7 +3,6 @@ import PlayerService from "../../Services/PlayerData/playerService";
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { PlayerCard } from "../../Components/PlayerCard";
-
 const Home = () => {
   const [nbaData, setPlayerData] = useState([]);
   const [nflData, setNflData] = useState([]);
@@ -165,7 +164,29 @@ const Home = () => {
             ></PlayerCard>
           ))}
         </div>
-        ;
+        <div>
+          <button
+            onClick={() => {
+              console.log("get results");
+              PlayerService.savePlayerSelectionForWeek();
+            }}
+          >
+            Save my team selection
+          </button>
+
+          <button
+            onClick={() => {
+              console.log("get results");
+
+              PlayerService.getPlayersSelectedForWeek();
+              // for each player id, check if they scored
+              //create summary data
+            }}
+          >
+            {" "}
+            Get my Weekly Results
+          </button>
+        </div>
       </div>
     </>
   );

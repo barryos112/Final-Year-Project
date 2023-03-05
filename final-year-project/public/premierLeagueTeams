@@ -1,0 +1,50 @@
+"premierLeague": [
+{
+"teamName": "Arsenal",
+"teamCode": "ARS"
+},
+{
+"teamName": "Liverpool",
+"teamCode": "LIV"
+},
+{
+"teamName": "City",
+"teamCode": "MCI"
+},
+{
+"teamName": "Spurs",
+"teamCode": "TOT"
+},
+{
+"teamName": "Villa",
+"teamCode": "AVL"
+},
+{
+"teamName": "United",
+"teamCode": "MUN"
+},
+{
+"teamName": "Newcastle",
+"teamCode": "NEW"
+},
+{
+"teamName": "Brentford",
+"teamCode": "BRE"
+},
+{
+"teamName": "Leicester",
+"teamCode": "LEI"
+},
+{
+"teamName": "Brighton",
+"teamCode": "BHA"
+},
+{
+"teamName": "West Ham",
+"teamCode": "WHU"
+},
+{
+"teamName": "Fulham",
+"teamCode": "FUL"
+}
+]

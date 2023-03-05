@@ -1,10 +1,12 @@
 // import React, { useEffect } from "react";
 // import { getDatabase, ref, set } from "firebase/database";
-// // import firebase from "firebase/app";
+// import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/database"; // Import the compat version of the database module
+
 // import "firebase/database";
 // // v9 compat packages are API compatible with v8 code
-
-// import firebase from "firebase/compat/app";
 
 // import "firebase/compat/auth";
 // // Initialize Firebase
@@ -93,9 +95,47 @@ export const getPremData = async () => {
   }
 };
 
+export const getPlayersSelectedForWeek = async () => {
+  try {
+    const playerSelectedForWeekRef = firebase
+      .database()
+      .ref("/users/VxcdhdZjK6TT8XVk7HOR79pdeRa2/playersSelected/20221106"); // TO DO USE CURRENT DATE
+
+    // const playersSelected = await playerSelectedForWeekRef.get();
+    // console.log("playersSelected", playersSelected);
+
+    playerSelectedForWeekRef.on("value", (snapshot) => {
+      // setData(snapshot.val());
+      console.log(snapshot.val());
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const savePlayerSelectionForWeek = async () => {
+  try {
+    //    const user = firebase.auth().currentUser;
+
+    const userRef = firebase
+      .database()
+      .ref("/users/VxcdhdZjK6TT8XVk7HOR79pdeRa2"); // TO DO replace with id of currently logged in user
+
+    userRef.set({
+      playersSelected: {
+        20221106: [1, 2, 3, 4, 5, 6],
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const PlayerService = {
   getNBAData,
   getNFLData,
   getPremData,
+  savePlayerSelectionForWeek,
+  getPlayersSelectedForWeek,
 };
 export default PlayerService;
