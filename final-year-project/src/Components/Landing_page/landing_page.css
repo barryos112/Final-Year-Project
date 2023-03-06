@@ -39,6 +39,20 @@
   .join-button:hover {
     background-color: #4D7B9D;
   }
+
+  /* .login-button {
+    background-color: #6CA0DC;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #4D7B9D;
+  } */
   
   
  .bg{

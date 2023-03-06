@@ -81,3 +81,37 @@
 .players-container .player-card .card{
   width: 33.33%; /* 3 items per row */
 }
+
+.saveButton{
+  display: block;
+
+  margin-top: 20px;
+  background-color: #6CA0DC;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.saveButton:hover{
+  background-color: #4D7B9D;
+}
+
+.weekResults{
+  display: block;
+
+  margin-top: 20px;
+  background-color: #6CA0DC;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.weekResults:hover{
+  background-color: #4D7B9D;
+}

@@ -166,6 +166,7 @@ const Home = () => {
         </div>
         <div>
           <button
+            className="saveButton"
             onClick={() => {
               console.log("get results");
               PlayerService.savePlayerSelectionForWeek();
@@ -175,6 +176,7 @@ const Home = () => {
           </button>
 
           <button
+            className="weekResults"
             onClick={() => {
               console.log("get results");
 
