@@ -29,6 +29,9 @@
   .join-button {
     background-color: #6CA0DC;
     color: white;
+    margin-right: 20px;
+    width: 200px;
+
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -40,9 +43,11 @@
     background-color: #4D7B9D;
   }
 
-  /* .login-button {
+  .login-button {
     background-color: #6CA0DC;
     color: white;
+    margin-left: 20px;
+    width: 200px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -52,7 +57,7 @@
   
   .login-button:hover {
     background-color: #4D7B9D;
-  } */
+  }
   
   
  .bg{

@@ -68,7 +68,7 @@ function Home() {
             })}
           </DropdownButton>
           <Link to="/team">
-            <button>Confirm Choices</button>
+            <button className="confirmButton">Confirm Choices</button>
           </Link>
         </div>
       </div>

@@ -4,7 +4,7 @@ import LandingPage from "../../final-year-project/src/Components/Landing_page/la
 import AccountCreation from "../../final-year-project/src/Components/Account_creation/account_creation";
 import SportSelection from "../../final-year-project/src/Components/Sport_selection/sport_selection";
 import TeamPage from "../../final-year-project/src/Components/Team_Page/team_page";
-// import Login from "./Components/Login_Page/login";
+import Login from "./Components/Login_Page/login";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route path="create-account" element={<AccountCreation />} />
           <Route path="select-sport" element={<SportSelection />} />
           <Route path="team" element={<TeamPage />} />
-          {/* <Route path="login" element={<Login />} /> */}
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
