@@ -101,30 +101,70 @@ export const getPlayersSelectedForWeek = async () => {
       .database()
       .ref("/users/VxcdhdZjK6TT8XVk7HOR79pdeRa2/playersSelected/20221106"); // TO DO USE CURRENT DATE
 
-    // const playersSelected = await playerSelectedForWeekRef.get();
-    // console.log("playersSelected", playersSelected);
-
+    const playersSelected = [];
     playerSelectedForWeekRef.on("value", (snapshot) => {
-      // setData(snapshot.val());
       console.log(snapshot.val());
+      playersSelected.push(snapshot.val());
     });
+
+    // wait for the listener to finish and then return the array
+    await new Promise((resolve) => {
+      playerSelectedForWeekRef.once("value", resolve);
+    });
+    console.log(playersSelected[0]);
+    return playersSelected[0];
   } catch (error) {
     console.error(error);
   }
 };
 
-export const savePlayerSelectionForWeek = async () => {
+export const savePlayerSelectionForWeek = async (playerIdsSelected) => {
   try {
     //    const user = firebase.auth().currentUser;
-
+    console.log(playerIdsSelected);
     const userRef = firebase
       .database()
-      .ref("/users/VxcdhdZjK6TT8XVk7HOR79pdeRa2"); // TO DO replace with id of currently logged in user
+      .ref("/users/YxrrikWnVcOkvfbaMhf2i9Fj4Sn2"); // TO DO replace with id of currently logged in user
 
     userRef.set({
       playersSelected: {
-        20221106: [1, 2, 3, 4, 5, 6],
+        20221106: playerIdsSelected,
       },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+//TO DO take in week key
+export const getPointsScoredByPlayersSelected = async (playersSelected) => {
+  try {
+    //    const user = firebase.auth().currentUser;
+    const weekRef = firebase.database().ref("/weeklyResults/20221106"); // TO DO replace with id of currently logged in user
+    weekRef.on("child_added", (snapshot) => {
+      const childData = snapshot.val();
+      // perform the necessary operations on the child node data
+      if (childData) {
+        console.log(childData);
+        // loop through the numbers and check if they exist in point_scorers
+        for (let number of playersSelected) {
+          if (childData.point_scorers && childData.point_scorers[number]) {
+            console.log(`Number ${number} found in node ${snapshot.key}`);
+            console.log(childData.point_scorers[number]);
+            // if they score a touchdown
+            // add 10 points to total score (get points awarded from the scoring system)
+
+            /**
+             * for each player selected:
+             * create summary
+             * total points
+             * events
+             *
+             */
+          } else {
+            console.log(`Number ${number} not found in node ${snapshot.key}`);
+          }
+        }
+      }
     });
   } catch (error) {
     console.error(error);
@@ -137,5 +177,6 @@ const PlayerService = {
   getPremData,
   savePlayerSelectionForWeek,
   getPlayersSelectedForWeek,
+  getPointsScoredByPlayersSelected,
 };
 export default PlayerService;

@@ -168,8 +168,9 @@ const Home = () => {
           <button
             className="saveButton"
             onClick={() => {
-              console.log("get results");
-              PlayerService.savePlayerSelectionForWeek();
+              const playerIdsSelected = playersSelected.map((obj) => obj.id);
+              console.log("save players", playersSelected, playerIdsSelected);
+              PlayerService.savePlayerSelectionForWeek(playerIdsSelected);
             }}
           >
             Save my team selection
@@ -180,9 +181,20 @@ const Home = () => {
             onClick={() => {
               console.log("get results");
 
-              PlayerService.getPlayersSelectedForWeek();
-              // for each player id, check if they scored
-              //create summary data
+              const playersSelectedForWeek =
+                PlayerService.getPlayersSelectedForWeek()
+                  .then((playersSelectedForWeek) => {
+                    console.log(playersSelectedForWeek);
+
+                    // for each player id, check if they scored this week
+                    //create summary data
+                    PlayerService.getPointsScoredByPlayersSelected(
+                      playersSelectedForWeek
+                    );
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
             }}
           >
             {" "}

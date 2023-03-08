@@ -1,0 +1,40 @@
+  [
+    {
+      "id": 10,
+      "sport": 'nfl'
+      "winner": "MIN",
+      "loser": "SF",
+      "score": "30-24",
+      "point_scorers": [
+        {
+        "playerId": "21"
+          "name": "Justin Jefferson",
+          "touchdowns": 2,
+          "yards": 120,
+          "fumbles": 0
+        },
+        {
+          "name": "Adam Thielen",
+          "touchdowns": 0,
+          "yards": 80,
+          "fumbles": 1
+        },
+         {
+          "name": "Dalvin Cook",
+          "touchdowns": 2,
+          "yards": 80,
+          "fumbles": 1
+        },
+        {
+          "name": "Christian McCaffrey",
+          "touchdowns": 3,
+          "yards": 130,
+          "fumbles": 1
+        },
+        }
+      ]
+    },
+
+  ]
+
+
