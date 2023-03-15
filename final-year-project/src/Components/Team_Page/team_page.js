@@ -3,11 +3,15 @@ import PlayerService from "../../Services/PlayerData/playerService";
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { PlayerCard } from "../../Components/PlayerCard";
+
+import { getPointsScoredByPlayersSelected } from "../../Services/PlayerData/playerService";
+
 const Home = () => {
   const [nbaData, setPlayerData] = useState([]);
   const [nflData, setNflData] = useState([]);
   const [premData, setPremData] = useState([]);
 
+  const [statsForPlayersSelected, setStatsForPlayersSelected] = useState([]);
   const NUMBER_OF_PLAYERS = 6;
 
   useEffect(() => {
@@ -160,6 +164,15 @@ const Home = () => {
                 updatedPlayersSelected.splice(index, 1, playerPlaceholder);
                 setPlayersSelected(updatedPlayersSelected);
               }}
+              statsForWeek={
+                statsForPlayersSelected.find(
+                  (playerStat) => player.id === playerStat.playerId
+                )
+                  ? statsForPlayersSelected.find(
+                      (playerStat) => player.id === playerStat.playerId
+                    )
+                  : undefined
+              }
             ></PlayerCard>
           ))}
         </div>
@@ -180,11 +193,14 @@ const Home = () => {
               const playersSelectedForWeek =
                 PlayerService.getPlayersSelectedForWeek()
                   .then((playersSelectedForWeek) => {
-                    // for each player id, check if they scored this week
-                    //create summary data
-                    PlayerService.getPointsScoredByPlayersSelected(
+                    // Call getPointsScoredByPlayersSelected function and pass playersSelectedForWeek as an argument
+                    return PlayerService.getPointsScoredByPlayersSelected(
                       playersSelectedForWeek
                     );
+                  })
+                  .then((statsForPlayersSelected) => {
+                    console.log("***", statsForPlayersSelected);
+                    setStatsForPlayersSelected(statsForPlayersSelected);
                   })
                   .catch((error) => {
                     console.error(error);
@@ -199,5 +215,11 @@ const Home = () => {
     </>
   );
 };
+
+async function getPointsSummaryForSelectedPlayers() {
+  const playersSelected = ["player1", "player2", "player3"];
+  const results = await getPointsScoredByPlayersSelected(playersSelected);
+  console.log(results);
+}
 
 export default Home;

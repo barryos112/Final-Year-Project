@@ -97,80 +97,143 @@ export const savePlayerSelectionForWeek = async (playerIdsSelected) => {
   }
 };
 //TO DO take in week key
-export const getPointsScoredByPlayersSelected = async (playersSelected) => {
-  try {
-    //    const user = firebase.auth().currentUser;
-    const weekRef = firebase.database().ref("/weeklyResults/20221106"); // TO DO replace with id of currently logged in user
+// export const getPointsScoredByPlayersSelected = async (playersSelected) => {
+//   try {
+//     //    const user = firebase.auth().currentUser;
+//     const weekRef = firebase.database().ref("/weeklyResults/20221106"); // TO DO replace with id of currently logged in user
+//     const resultsForPlayersSelected = [];
 
-    const resultsForPlayersSelected = new Array(6);
+//     // player id - points scored
+//     /**
+//      *
+//      * player id
+//      * total points scored
+//      * touchdowns
+//      * yards
+//      * fumbles
+//      */
 
-    // player id - points scored
-    /**
-     *
-     * player id
-     * total points scored
-     * touchdowns
-     * yards
-     * fumbles
-     */
+//     weekRef.on("child_added", (snapshot) => {
+//       const childData = snapshot.val();
+//       const sport = childData.sport;
+//       const scoringSystemRef = firebase
+//         .database()
+//         .ref("/scoringSystem/" + sport);
 
-    weekRef.on("child_added", (snapshot) => {
-      const childData = snapshot.val();
-      const sport = childData.sport;
-      const scoringSystemRef = firebase
-        .database()
-        .ref("/scoringSystem/" + sport);
+//       // perform the necessary operations on the child node data
+//       if (childData) {
+//         // loop through the numbers and check if they exist in point_scorers
+//         for (let number of playersSelected) {
+//           const playerPointsSummary = {
+//             playerId: number,
+//           };
+//           // player number
+//           if (childData.point_scorers && childData.point_scorers[number]) {
+//             const eventsForPlayer = childData.point_scorers[number];
+//             /**
+//              * for each player selected:
+//              * create summary
+//              * total points
+//              * events
+//              *
+//              */
+//             scoringSystemRef.on("value", (scoringSnapshot) => {
+//               Object.keys(eventsForPlayer).forEach((scoringEvent) => {
+//                 const numberOfEventsScored = eventsForPlayer[scoringEvent];
+//                 // Assume you have a key named "fumbles" - find out how many points that earns
+//                 const key = scoringEvent;
+//                 // Get a reference to the node with the same name as the key
+//                 const nodeRef = scoringSystemRef.child(key);
+//                 nodeRef.on("value", (snapshot) => {
+//                   const pointsForEvent = snapshot.val();
+//                   const pointsEarnedFromEvent =
+//                     numberOfEventsScored * pointsForEvent;
+//                   playerPointsSummary[key] = pointsEarnedFromEvent;
+//                   console.log("playerPointsSummary", playerPointsSummary);
+//                 });
+//               });
+//             });
 
-      // perform the necessary operations on the child node data
-      if (childData) {
-        // loop through the numbers and check if they exist in point_scorers
-        for (let number of playersSelected) {
-          // player number
-          if (childData.point_scorers && childData.point_scorers[number]) {
-            const eventsForPlayer = childData.point_scorers[number];
-            const playerPointsSummary = {
-              playerId: number,
-            };
-            // if they score a touchdown
-            // add 10 points to total score (get points awarded from the scoring system)
+//             resultsForPlayersSelected.push(playerPointsSummary);
+//           }
+//         }
+//         console.log(
+//           "returning resultsForPlayersSelected",
+//           resultsForPlayersSelected
+//         );
+//       }
+//       return resultsForPlayersSelected;
+//     });
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
-            /**
-             * for each player selected:
-             * create summary
-             * total points
-             * events
-             *
-             */
-            scoringSystemRef.on("value", (scoringSnapshot) => {
-              const scoringData = scoringSnapshot.val();
-              Object.keys(eventsForPlayer).forEach((scoringEvent) => {
-                // console.log(
-                //   "Player scored: ",
-                //   `${scoringEvent}: ${eventsForPlayer[scoringEvent]}`
-                // );
-                const numberOfEventsScored = eventsForPlayer[scoringEvent];
-                // Assume you have a key named "fumbles" - find out how many points that earns
-                const key = scoringEvent;
-                // Get a reference to the node with the same name as the key
-                const nodeRef = scoringSystemRef.child(key);
-                nodeRef.on("value", (snapshot) => {
-                  const pointsForEvent = snapshot.val();
-                  const pointsEarnedFromEvent =
-                    numberOfEventsScored * pointsForEvent;
-                  playerPointsSummary[key] = pointsEarnedFromEvent;
-                  console.log("playerPointsSummary", playerPointsSummary);
+export const getPointsScoredByPlayersSelected = (playersSelected) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const weekRef = firebase.database().ref("/weeklyResults/20221106");
+      const resultsForPlayersSelected = [];
+
+      weekRef.on("value", (weekSnapshot) => {
+        const promises = [];
+
+        weekSnapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+
+          if (childData && childData.point_scorers) {
+            for (let number of playersSelected) {
+              if (childData.point_scorers[number]) {
+                const eventsForPlayer = childData.point_scorers[number];
+                const sport = childData.sport;
+                const scoringSystemRef = firebase
+                  .database()
+                  .ref("/scoringSystem/" + sport);
+
+                const playerPointsSummary = {
+                  playerId: number,
+                };
+
+                let totalPointsForWeek = 0;
+                Object.keys(eventsForPlayer).forEach((scoringEvent) => {
+                  const numberOfEventsScored = eventsForPlayer[scoringEvent];
+                  const key = scoringEvent;
+                  const nodeRef = scoringSystemRef.child(key);
+
+                  const promise = nodeRef.once("value").then((snapshot) => {
+                    const pointsForEvent = snapshot.val();
+                    const pointsEarnedFromEvent =
+                      numberOfEventsScored * pointsForEvent;
+                    playerPointsSummary[key] = pointsEarnedFromEvent;
+
+                    playerPointsSummary["numberOf" + key] =
+                      numberOfEventsScored;
+
+                    totalPointsForWeek =
+                      totalPointsForWeek + pointsEarnedFromEvent;
+                  });
+
+                  promises.push(promise);
                 });
-              });
-            });
-          } else {
-            console.log(`Number ${number} not found in node ${snapshot.key}`);
+                resultsForPlayersSelected.push(playerPointsSummary);
+              }
+            }
           }
-        }
-      }
-    });
-  } catch (error) {
-    console.error(error);
-  }
+        });
+
+        Promise.all(promises).then(() => {
+          console.log(
+            "returning resultsForPlayersSelected",
+            resultsForPlayersSelected
+          );
+          resolve(resultsForPlayersSelected);
+        });
+      });
+    } catch (error) {
+      console.error(error);
+      reject(error);
+    }
+  });
 };
 
 const PlayerService = {
