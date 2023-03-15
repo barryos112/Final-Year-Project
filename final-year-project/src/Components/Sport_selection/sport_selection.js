@@ -15,7 +15,6 @@ function Home() {
   const [value, setValue] = useState(["", "", ""]);
 
   const handleSelect = (sportNumber, selectedSport) => {
-    console.log(sportNumber, selectedSport);
     const updatedArray = { ...value };
     updatedArray[sportNumber] = selectedSport;
     setValue(updatedArray);

@@ -47,12 +47,10 @@ const Home = () => {
       return;
     }
 
-    console.log("pressed submit");
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log("created user", user.uid);
         // Submit to server
         const userData = {
           username: username,

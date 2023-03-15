@@ -46,9 +46,9 @@ export const PlayerCard = ({
 
     <Card className="player-card" style={{ width: "18rem" }}>
       <Card.Body>
-        <Card.Title>{playerName}</Card.Title>
-        <Card.Text>{team}</Card.Text>
-        <Card.Text>{position}</Card.Text>
+        <Card.Title>Name: {playerName}</Card.Title>
+        <Card.Text>Team: {team}</Card.Text>
+        <Card.Text>Position: {position}</Card.Text>
 
         {!playerName.includes("Player ") && (
           <Button variant="danger" onClick={onClickRemove}>

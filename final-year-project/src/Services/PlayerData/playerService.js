@@ -7,39 +7,7 @@ import "firebase/compat/database"; // Import the compat version of the database 
 
 // import "firebase/database";
 // // v9 compat packages are API compatible with v8 code
-
-// import "firebase/compat/auth";
-// // Initialize Firebase
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBNRynRskEMrHDDxJuDME1Xa6MNLTDKXsg",
-//   authDomain: "final-year-project-f139c.firebaseapp.com",
-//   databaseURL:
-//     "https://final-year-project-f139c-default-rtdb.europe-west1.firebasedatabase.app",
-//   projectId: "final-year-project-f139c",
-//   storageBucket: "final-year-project-f139c.appspot.com",
-//   messagingSenderId: "1037159617922",
-//   appId: "1:1037159617922:web:f40a90ce5f8f1edf76ab9b",
-// };
-// firebase.initializeApp(firebaseConfig); // TO DO move this
-
-// const loadJsonFile = async () => {
-//   try {
-//     const response = await fetch("./nbaPlayers.json");
-//     const jsonData = await response.json();
-//     console.log(jsonData);
-//     const db = getDatabase();
-//     const dbRef = ref(db, "players");
-//     set(dbRef, jsonData);
-//     return jsonData;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-// const PlayerService = {
-//   loadJsonFile,
-// };
-// export default PlayerService;
-
+const USER_ID = "0IEGzKfvX5WrunXeRGeJQBwV4Z73";
 export const getNBAData = async () => {
   try {
     const response = await fetch("./nbaPlayers.json", {
@@ -49,8 +17,6 @@ export const getNBAData = async () => {
       },
     });
     const jsonData = await response.json();
-    console.log(jsonData);
-
     // how to load json data to firebase - something like this
     //     const db = getDatabase();
     // const dbRef = ref(db, "players");
@@ -70,7 +36,6 @@ export const getNFLData = async () => {
       },
     });
     const jsonData = await response.json();
-    console.log(jsonData);
 
     return jsonData;
   } catch (error) {
@@ -87,7 +52,6 @@ export const getPremData = async () => {
       },
     });
     const jsonData = await response.json();
-    console.log(jsonData);
 
     return jsonData;
   } catch (error) {
@@ -99,11 +63,10 @@ export const getPlayersSelectedForWeek = async () => {
   try {
     const playerSelectedForWeekRef = firebase
       .database()
-      .ref("/users/VxcdhdZjK6TT8XVk7HOR79pdeRa2/playersSelected/20221106"); // TO DO USE CURRENT DATE
+      .ref("/users/0IEGzKfvX5WrunXeRGeJQBwV4Z73/playersSelected/20221106"); // TO DO USE CURRENT DATE
 
     const playersSelected = [];
     playerSelectedForWeekRef.on("value", (snapshot) => {
-      console.log(snapshot.val());
       playersSelected.push(snapshot.val());
     });
 
@@ -111,7 +74,6 @@ export const getPlayersSelectedForWeek = async () => {
     await new Promise((resolve) => {
       playerSelectedForWeekRef.once("value", resolve);
     });
-    console.log(playersSelected[0]);
     return playersSelected[0];
   } catch (error) {
     console.error(error);
@@ -121,10 +83,9 @@ export const getPlayersSelectedForWeek = async () => {
 export const savePlayerSelectionForWeek = async (playerIdsSelected) => {
   try {
     //    const user = firebase.auth().currentUser;
-    console.log(playerIdsSelected);
     const userRef = firebase
       .database()
-      .ref("/users/YxrrikWnVcOkvfbaMhf2i9Fj4Sn2"); // TO DO replace with id of currently logged in user
+      .ref("/users/0IEGzKfvX5WrunXeRGeJQBwV4Z73"); // TO DO replace with id of currently logged in user
 
     userRef.set({
       playersSelected: {
@@ -140,16 +101,36 @@ export const getPointsScoredByPlayersSelected = async (playersSelected) => {
   try {
     //    const user = firebase.auth().currentUser;
     const weekRef = firebase.database().ref("/weeklyResults/20221106"); // TO DO replace with id of currently logged in user
+
+    const resultsForPlayersSelected = new Array(6);
+
+    // player id - points scored
+    /**
+     *
+     * player id
+     * total points scored
+     * touchdowns
+     * yards
+     * fumbles
+     */
+
     weekRef.on("child_added", (snapshot) => {
       const childData = snapshot.val();
+      const sport = childData.sport;
+      const scoringSystemRef = firebase
+        .database()
+        .ref("/scoringSystem/" + sport);
+
       // perform the necessary operations on the child node data
       if (childData) {
-        console.log(childData);
         // loop through the numbers and check if they exist in point_scorers
         for (let number of playersSelected) {
+          // player number
           if (childData.point_scorers && childData.point_scorers[number]) {
-            console.log(`Number ${number} found in node ${snapshot.key}`);
-            console.log(childData.point_scorers[number]);
+            const eventsForPlayer = childData.point_scorers[number];
+            const playerPointsSummary = {
+              playerId: number,
+            };
             // if they score a touchdown
             // add 10 points to total score (get points awarded from the scoring system)
 
@@ -160,6 +141,27 @@ export const getPointsScoredByPlayersSelected = async (playersSelected) => {
              * events
              *
              */
+            scoringSystemRef.on("value", (scoringSnapshot) => {
+              const scoringData = scoringSnapshot.val();
+              Object.keys(eventsForPlayer).forEach((scoringEvent) => {
+                // console.log(
+                //   "Player scored: ",
+                //   `${scoringEvent}: ${eventsForPlayer[scoringEvent]}`
+                // );
+                const numberOfEventsScored = eventsForPlayer[scoringEvent];
+                // Assume you have a key named "fumbles" - find out how many points that earns
+                const key = scoringEvent;
+                // Get a reference to the node with the same name as the key
+                const nodeRef = scoringSystemRef.child(key);
+                nodeRef.on("value", (snapshot) => {
+                  const pointsForEvent = snapshot.val();
+                  const pointsEarnedFromEvent =
+                    numberOfEventsScored * pointsForEvent;
+                  playerPointsSummary[key] = pointsEarnedFromEvent;
+                  console.log("playerPointsSummary", playerPointsSummary);
+                });
+              });
+            });
           } else {
             console.log(`Number ${number} not found in node ${snapshot.key}`);
           }

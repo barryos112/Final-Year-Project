@@ -149,7 +149,6 @@ const Home = () => {
               team={player.team}
               position={player.position}
               onClickRemove={() => {
-                console.log(index);
                 const playerPlaceholder = new Player(
                   index + 1,
                   `Player ${index + 1}`,
@@ -169,7 +168,6 @@ const Home = () => {
             className="saveButton"
             onClick={() => {
               const playerIdsSelected = playersSelected.map((obj) => obj.id);
-              console.log("save players", playersSelected, playerIdsSelected);
               PlayerService.savePlayerSelectionForWeek(playerIdsSelected);
             }}
           >
@@ -179,13 +177,9 @@ const Home = () => {
           <button
             className="weekResults"
             onClick={() => {
-              console.log("get results");
-
               const playersSelectedForWeek =
                 PlayerService.getPlayersSelectedForWeek()
                   .then((playersSelectedForWeek) => {
-                    console.log(playersSelectedForWeek);
-
                     // for each player id, check if they scored this week
                     //create summary data
                     PlayerService.getPointsScoredByPlayersSelected(
