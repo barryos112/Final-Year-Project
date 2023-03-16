@@ -12,7 +12,7 @@ export const PlayerCard = ({
   statsForWeek,
 }) => {
   console.log(statsForWeek);
-
+  //TODO Add actual stats from file to card but use data with points system attached
   const elements = [];
   let totalWeekPoints = 0;
   for (let prop in statsForWeek) {
