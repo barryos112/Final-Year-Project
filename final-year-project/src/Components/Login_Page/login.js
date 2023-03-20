@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./login.css";
 
@@ -28,7 +28,9 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <input className="login-form-submit" type="submit" value="Log In" />
+        <Link to="/team">
+          <input className="login-form-submit" type="submit" value="Log In" />
+        </Link>
       </form>
     </div>
   );

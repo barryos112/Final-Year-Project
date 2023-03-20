@@ -176,12 +176,13 @@ const Home = () => {
             ></PlayerCard>
           ))}
         </div>
-        <div>
+        <div className="button-container">
           <button
             className="saveButton"
             onClick={() => {
               const playerIdsSelected = playersSelected.map((obj) => obj.id);
               PlayerService.savePlayerSelectionForWeek(playerIdsSelected);
+              window.alert("Your team selection has been saved!");
             }}
           >
             Save my team selection
