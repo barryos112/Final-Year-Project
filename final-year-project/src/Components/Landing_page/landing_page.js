@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./landing_page.css";
-import Card from "react-bootstrap/Card";
+// import Card from "react-bootstrap/Card";
 
 const Home = () => {
   return (
@@ -19,24 +19,29 @@ const Home = () => {
         </Link>
       </div>
 
-      <div className="LP-card-container">
-        <div className="LP-card-outer">
-          <Card className="LP-card-inner">
-            <Card.Title>Welcome</Card.Title>
-            <Card.Text>Explain Main Rules</Card.Text>
-          </Card>
+      <div class="card-container">
+        <div class="card-1">
+          <h3>Create your account and choose your sports!</h3>
+          <p>
+            Create your account or log in if you're an existing user. Choose
+            which sports leagues you want to be able to select players from!
+          </p>
         </div>
-        <div className="LP-card-outer">
-          <Card className="LP-card-inner">
-            <Card.Title>Next steps</Card.Title>
-            <Card.Text>Create account pick team</Card.Text>
-          </Card>
+
+        <div class="card-2">
+          <h3>Make your team your own!</h3>
+          <p>
+            Select your favourite players from multiple leagues and add them on
+            to one cohesive team.
+          </p>
         </div>
-        <div className="LP-card-outer">
-          <Card className="LP-card-inner">
-            <Card.Title>Enjoy</Card.Title>
-            <Card.Text>Play and challenge friends</Card.Text>
-          </Card>
+
+        <div class="card-3">
+          <h3>Score points from real life games!</h3>
+          <p>
+            Once you have chosen your squad, how they perform in real life games
+            will account for points for your personal team!
+          </p>
         </div>
       </div>
     </div>
