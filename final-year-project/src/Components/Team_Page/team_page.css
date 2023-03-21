@@ -117,3 +117,7 @@
   position: relative;
   z-index: 2;
 }
+
+.total-score{
+  background-color: white;
+}

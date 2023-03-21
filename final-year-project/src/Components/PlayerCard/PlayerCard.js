@@ -11,26 +11,18 @@ export const PlayerCard = ({
   onClickRemove,
   statsForWeek,
 }) => {
-  console.log(statsForWeek);
+  // console.log("in card stats", statsForWeek["totalWeekPoints"]);
   //TODO Add actual stats from file to card but use data with points system attached
   const elements = [];
-  let totalWeekPoints = 0;
-  for (let prop in statsForWeek) {
-    const points = prop.includes("numberOf") ? 0 : statsForWeek[prop];
-    const value = <span>{points}</span>;
-    if (prop !== "playerId" && prop !== "name" && points > 0) {
-      const label = <label>{prop}:</label>;
-      elements.push(label);
-
-      elements.push(value);
-      totalWeekPoints = totalWeekPoints + points;
-
-      const br = <br />;
-      elements.push(br);
+  for (let stat in statsForWeek) {
+    console.log(stat);
+    if (!stat.includes("name") && !stat.includes("playerId")) {
+      if (stat.includes("eventSummary")) {
+        elements.push(<label>{statsForWeek[stat]}</label>);
+      }
     }
   }
 
-  // return <div>{elements}</div>;
   return (
     <Card className="player-card" style={{ width: "18rem" }}>
       <Card.Body>
@@ -41,8 +33,11 @@ export const PlayerCard = ({
         {statsForWeek && (
           <div>
             RESULTS:
+            <br></br>
             {elements}
-            Total points for week: {totalWeekPoints}
+            <br></br>
+            <br></br>
+            Total points for week: {statsForWeek["totalWeekPoints"]}
           </div>
         )}
         {!playerName.includes("Player ") && (

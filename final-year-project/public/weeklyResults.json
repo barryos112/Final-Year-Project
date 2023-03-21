@@ -1,0 +1,561 @@
+{
+    "20221106": {
+        "10":{
+            "sport": "nfl",
+            "winner": "MIN",
+            "loser": "SF",
+            "score": "30-24",
+            "point_scorers": {
+              "21":{
+                "name": "Justin Jefferson",
+                "touchdowns": 2,
+                "yards": 120,
+                "fumbles": 0
+              },
+              "32":{
+                "name": "Adam Thielen",
+                "touchdowns": 0,
+                "yards": 80,
+                "fumbles": 1
+              },
+              "38":{
+                "name": "Dalvin Cook",
+                "touchdowns": 2,
+                "yards": 80,
+                "fumbles": 1
+              },
+              "22":{
+                "name": "Christian McCaffrey",
+                "touchdowns": 3,
+                "yards": 130,
+                "fumbles": 1
+              }
+              
+          
+          }  },
+        
+           "11": 
+           {
+          "sport": "nfl",
+          "winner": "NYG",
+          "loser": "KC",
+          "score": "28-24",
+          "point_scorers": {
+          "23":{
+              "name": "Saquon Barkley",
+              "touchdowns": 2,
+              "yards": 120,
+              "fumbles": 0
+            },
+            "24":{
+              "name": "Travis Kelce",
+              "touchdowns": 1,
+              "yards": 80,
+              "fumbles": null
+            },
+            "26":{
+              "name": "Patrick Mahomes",
+              "touchdowns": 3,
+              "yards": 250,
+              "fumbles": 1
+            }
+          
+        }
+      },
+       "12": {
+         "sport": "nfl",
+         "winner": "CIN",
+         "loser": "LAC",
+         "score": "33-24",
+         "point_scorers": {
+            "28": {
+               "name": "JaMarr Chase",
+               "touchdowns": 2,
+               "yards": 120,
+               "fumbles": 0
+            },
+            "35": {
+               "name": "Joe Burrow",
+               "touchdowns": 3,
+               "yards": 280,
+               "fumbles": null
+            },
+            "25": {
+               "name": "Austin Ekeler",
+               "touchdowns": 3,
+               "yards": 110,
+               "fumbles": 2
+            }
+         }
+      },
+          "13": {
+              "sport": "nfl",
+              "winner": "MIA",
+              "loser": "CLE",
+              "score": "28-24",
+              "point_scorers": {
+                  "27": {
+                      "name": "Tyreek Hill",
+                      "touchdowns": 1,
+                      "yards": 90,
+                      "fumbles": 0
+                  },
+                  "29": {
+                      "name": "Nick Chubb",
+                      "touchdowns": 2,
+                      "yards": 120,
+                      "fumbles": 2
+                  }
+              }
+          },
+      
+      "14": {
+        "sport": "nfl",
+        "winner": "BUF",
+        "loser": "LV",
+        "score": "35-10",
+        "point_scorers": {
+          "31": {
+            "name": "Josh Allen",
+            "touchdowns": 2,
+            "yards": 320,
+            "fumbles": 0
+          },
+          "40": {
+            "name": "Steffon Diggs",
+            "touchdowns": 1,
+            "yards": 80,
+            "fumbles": 0
+          },
+          "33": {
+            "name": "Davante Adams",
+            "touchdowns": 1,
+            "yards": 150,
+            "fumbles": 1
+          },
+          "39": {
+            "name": "Josh Jacobs",
+            "touchdowns": 0,
+            "yards": 70,
+            "fumbles": 2
+          }
+        }
+      },
+          
+        "15": {
+          "sport": "nfl",
+          "winner": "LAR",
+          "loser": "ARZ",
+          "score": "17-10",
+          "point_scorers": {
+            "34": {
+              "name": "Cooper Kupp",
+              "touchdowns": 1,
+              "yards": 150,
+              "fumbles": 1
+            },
+            "36": {
+              "name": "Kyler Murray",
+              "touchdowns": 1,
+              "yards": 170,
+              "fumbles": 2
+            }
+          }
+        },
+        "16": {
+          "sport": "nfl",
+          "winner": "PHI",
+          "loser": "TEN",
+          "score": "27-10",
+          "point_scorers": {
+          "37":{
+              "name": "Jalen Hurts",
+              "touchdowns": 2,
+              "yards": 250,
+              "fumbles": 2
+            },
+            "30":{
+              "name": "Derrick Henry",
+              "touchdowns": 1,
+              "yards": 150,
+              "fumbles": 2
+            }
+        }
+
+
+
+
+
+
+    },
+
+    "1": {
+        "sport": "nba",
+        "winner": "DEN",
+        "loser": "PHX",
+        "score": "112-108",
+        "point_scorers": {
+          "1": {
+            "name": "Nikola Jokic",
+            "points": 35,
+            "assists": 8,
+            "turnovers": 3
+          },
+          "2": {
+            "name": "Kevin Durant",
+            "points": 40,
+            "assists": 6,
+            "turnovers": 4
+          },
+          "20": {
+            "name": "Devin Booker",
+            "points": 27,
+            "assists": 5,
+            "turnovers": 5
+          }
+        }
+      },
+    
+    
+      "2": {
+        "sport": "nba",
+        "winner": "PHI",
+        "loser": "GSW",
+        "score": "112-108",
+        "point_scorers": {
+          "4": {
+            "name": "Stephen Curry",
+            "points": 35,
+            "assists": 6,
+            "turnovers": 4
+          },
+          "3": {
+            "name": "Joel Embiid",
+            "points": 33,
+            "assists": 3,
+            "turnovers": 5
+          },
+          "9": {
+            "name": "James Harden",
+            "points": 22,
+            "assists": 10,
+            "turnovers": 4
+          }
+        }
+      }
+    ,
+      "3": {
+        "sport": "nba",
+        "winner": "POR",
+        "loser": "BOS",
+        "score": "112-108",
+        "point_scorers": {
+          "5": {
+            "name": "Damian Lillard",
+            "points": 50,
+            "assists": 8,
+            "turnovers": 3
+          },
+          "7": {
+            "name": "Jayson Tatum",
+            "points": 28,
+            "assists": 6,
+            "turnovers": 4
+          }
+        }
+      }
+    ,
+      "4": {
+        "sport": "nba",
+        "winner": "CLE",
+        "loser": "MEM",
+        "score": "112-108",
+        "point_scorers": {
+          "10": {
+            "name": "Donovan Mitchell",
+            "points": 35,
+            "assists": 8,
+            "turnovers": 3
+          },
+          "11": {
+            "name": "Ja Morant",
+            "points": 30,
+            "assists": 10,
+            "turnovers": 4
+          }
+        }
+      }
+ ,
+      "5": {
+        "sport": "nba",
+        "winner": "NOP",
+        "loser": "LAL",
+        "score": "112-108",
+        "point_scorers": {
+          "12": {
+            "name": "Zion Williamson",
+            "points": 43,
+            "assists": 4,
+            "turnovers": 3
+          },
+          "13": {
+            "name": "Lebron James",
+            "points": 36,
+            "assists": 11,
+            "turnovers": 2
+          }
+        }
+},
+    "6": {
+        "sport": "nba",
+        "winner": "MIN",
+        "loser": "LAC",
+        "score": "112-108",
+        "point_scorers": {
+            "14": {
+                "name": "Anthony Edwards",
+                "points": 22,
+                "assists": 4,
+                "turnovers": 3
+            },
+            "15": {
+                "name": "Kawhi Leonard",
+                "points": 34,
+                "assists": 6,
+                "turnovers": 4
+            }
+        }
+    },
+    "7": {
+        "sport": "nba",
+        "winner": "MIA",
+        "loser": "ATL",
+        "score": "112-108",
+        "point_scorers": {
+            "16": {
+                "name": "Jimmy Butler",
+                "points": 30,
+                "assists": 8,
+                "turnovers": 3
+            },
+            "17": {
+                "name": "Trae Young",
+                "points": 36,
+                "assists": 8,
+                "turnovers": 7
+            }
+        }
+    },
+    "8": {
+        "sport": "nba",
+        "winner": "CHA",
+        "loser": "CHI",
+        "score": "112-108",
+        "point_scorers": {
+            "18": {
+                "name": "Lamelo Ball",
+                "points": 26,
+                "assists": 8,
+                "turnovers": 6
+            },
+            "19": {
+                "name": "DeMar DeRozan",
+                "points": 32,
+                "assists": 6,
+                "turnovers": 4
+            }
+        }
+    },
+    "9": {
+        "sport": "nba",
+        "winner": "DAL",
+        "loser": "LAL",
+        "score": "112-108",
+        "point_scorers": {
+            "6": {
+                "name": "Luka Doncic",
+                "points": 26,
+                "assists": 8,
+                "turnovers": 6
+            },
+            "8": {
+                "name": "Kyrie Irving",
+                "points": 32,
+                "assists": 6,
+                "turnovers": 4
+            }
+        }
+    },
+    "17":{
+        "sport":"premierLeague",
+        "winner":"ARS",
+        "loser":"LIV",
+        "score":"2-2",
+        "point_scorers":{
+           "41":{
+              "name":"Bukayo Saka",
+              "goals":1,
+              "assists":0,
+              "cards":1
+           },
+           "42":{
+              "name":"Mohamed Salah",
+              "goals":1,
+              "assists":0,
+              "cards":1
+           },
+           "43":{
+              "name":"Darwin Nunez",
+              "goals":2,
+              "assists":0,
+              "cards":0
+           },
+           "45":{
+              "name":"Martin Odegaard",
+              "goals":0,
+              "assists":2,
+              "cards":0
+           },
+           "46":{
+              "name":"Trent Alexander Arnold",
+              "goals":0,
+              "assists":2,
+              "cards":0
+           }
+        }
+     },
+     "18":{
+        "sport":"premierLeague",
+        "winner":"MCI",
+        "loser":"TOT",
+        "score":"4-3",
+        "point_scorers":{
+           "44":{
+              "name":"Erling Haaland",
+              "goals":2,
+              "assists":0,
+              "cards":0
+           },
+           "47":{
+              "name":"Kevin De Bruyne",
+              "goals":0,
+              "assists":2,
+              "cards":0
+           },
+           "48":{
+              "name":"Harry Kane",
+              "goals":2,
+              "assists":1,
+              "cards":0
+           },
+           "55":{
+              "name":"Jack Grealish ",
+              "goals":1,
+              "assists":1,
+              "cards":0
+           },
+           "52":{
+              "name":"Richarlison",
+              "goals":1,
+              "assists":0,
+              "cards":1
+           }
+        }
+     },
+     "19":{
+        "sport":"premierLeague",
+        "winner":"AVL",
+        "loser":"MUN",
+        "score":"3-1",
+        "point_scorers":{
+           "49":{
+              "name":"Ollie Watkins",
+              "goals":2,
+              "assists":1,
+              "cards":0
+           },
+           "54":{
+              "name":"Bruno Fernandes",
+              "goals":0,
+              "assists":1,
+              "cards":1
+           },
+           "51":{
+              "name":"Marcus Rashford",
+              "goals":1,
+              "assists":0,
+              "cards":0
+           }
+        }
+     },
+   "20": {
+       "sport": "premierLeague",
+       "winner": "WHU",
+       "loser": "NEW",
+       "score": "2-1",
+       "point_scorers": {
+           "58": {
+               "name": "Jarrod Bowen",
+               "goals": 1,
+               "assists": 1,
+               "cards": 0
+           },
+           "60": {
+               "name": "Danny Ings",
+               "goals": 1,
+               "assists": 0,
+               "cards": 0
+           },
+           "51": {
+               "name": "Kieran Trippier",
+               "goals": 1,
+               "assists": 0,
+               "cards": 1
+           }
+       }
+   },
+   "21": {
+       "sport": "premierLeague",
+       "winner": "BRE",
+       "loser": "LEI",
+       "score": "2-1",
+       "point_scorers": {
+           "53": {
+               "name": "Ivan Toney",
+               "goals": 2,
+               "assists": 0,
+               "cards": 1
+           },
+           "56": {
+               "name": "James Maddison",
+               "goals": 1,
+               "assists": 0,
+               "cards": 0
+           }
+       }
+   },
+   "22": {
+       "sport": "premierLeague",
+       "winner": "BHA",
+       "loser": "FUL",
+       "score": "3-2",
+       "point_scorers": {
+           "57": {
+               "name": "Solly March",
+               "goals": 1,
+               "assists": 1,
+               "cards": 0
+           },
+           "59": {
+               "name": "Aleksandar Mitrovic",
+               "goals": 2,
+               "assists": 0,
+               "cards": 0
+           }
+       }
+   }
+}
+
+
+
+}

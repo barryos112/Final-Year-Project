@@ -13,6 +13,8 @@ const Home = () => {
 
   const [statsForPlayersSelected, setStatsForPlayersSelected] = useState([]);
   const NUMBER_OF_PLAYERS = 6;
+  const [overallPointsForWeekCombined, setOverallPointsForWeekCombined] =
+    useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -145,6 +147,10 @@ const Home = () => {
               ))}
             </Dropdown.Menu>
           </Dropdown>
+
+          <div className="total-score">
+            Your score for the week: {overallPointsForWeekCombined}
+          </div>
         </div>
         <div className="players-container">
           {playersSelected.map((player, index) => (
@@ -191,6 +197,7 @@ const Home = () => {
           <button
             className="weekResults"
             onClick={() => {
+              let pointsForWeekCombined = 0;
               const playersSelectedForWeek =
                 PlayerService.getPlayersSelectedForWeek()
                   .then((playersSelectedForWeek) => {
@@ -200,8 +207,49 @@ const Home = () => {
                     );
                   })
                   .then((statsForPlayersSelected) => {
-                    console.log("***", statsForPlayersSelected);
-                    setStatsForPlayersSelected(statsForPlayersSelected);
+                    const testStats = statsForPlayersSelected.map((player) => {
+                      let totalWeekPoints = 0; // for a player
+                      for (let stat in player) {
+                        if (
+                          !stat.includes("name") &&
+                          !stat.includes("playerId")
+                        ) {
+                          if (
+                            stat.includes("pointsEarnedFrom") &&
+                            !stat.includes("NaN")
+                          ) {
+                            const pointsEarnedFromEvent = player[stat];
+                            totalWeekPoints =
+                              totalWeekPoints + pointsEarnedFromEvent;
+                            const eventTitle =
+                              stat.split("pointsEarnedFrom")[1];
+                            const pointsPerEvent =
+                              player["pointsPer" + eventTitle];
+                            const numberOfEvents =
+                              player["numberOf" + eventTitle];
+                            const eventSummary = `${eventTitle} (${pointsPerEvent} pts each): ${numberOfEvents}`;
+                            player["eventSummary" + eventTitle] = eventSummary;
+                            player["totalWeekPoints"] = totalWeekPoints;
+                          }
+                        }
+                      }
+
+                      pointsForWeekCombined =
+                        pointsForWeekCombined + totalWeekPoints;
+
+                      console.log(
+                        "pointsForWeekCombined",
+                        pointsForWeekCombined
+                      );
+                      return player;
+                    });
+
+                    // for (let stat in statsForPlayersSelected) {
+                    //   console.log(stat);
+                    // }
+                    console.log("testStats", testStats);
+                    setStatsForPlayersSelected(testStats);
+                    setOverallPointsForWeekCombined(pointsForWeekCombined);
                   })
                   .catch((error) => {
                     console.error(error);

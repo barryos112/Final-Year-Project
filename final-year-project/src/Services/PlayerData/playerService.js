@@ -183,6 +183,8 @@ export const getPointsScoredByPlayersSelected = (playersSelected) => {
 
           if (childData && childData.point_scorers) {
             for (let number of playersSelected) {
+              let totalPointsForWeek = 0;
+              console.log("checking player ", number);
               if (childData.point_scorers[number]) {
                 const eventsForPlayer = childData.point_scorers[number];
                 const sport = childData.sport;
@@ -194,8 +196,8 @@ export const getPointsScoredByPlayersSelected = (playersSelected) => {
                   playerId: number,
                 };
 
-                let totalPointsForWeek = 0;
                 Object.keys(eventsForPlayer).forEach((scoringEvent) => {
+                  console.log("checking scoringEvent", scoringEvent);
                   const numberOfEventsScored = eventsForPlayer[scoringEvent];
                   const key = scoringEvent;
                   const nodeRef = scoringSystemRef.child(key);
@@ -204,17 +206,30 @@ export const getPointsScoredByPlayersSelected = (playersSelected) => {
                     const pointsForEvent = snapshot.val();
                     const pointsEarnedFromEvent =
                       numberOfEventsScored * pointsForEvent;
-                    playerPointsSummary[key] = pointsEarnedFromEvent;
+
+                    playerPointsSummary[key] = numberOfEventsScored; // goals: number of goals
 
                     playerPointsSummary["numberOf" + key] =
                       numberOfEventsScored;
+                    playerPointsSummary["pointsPer" + key] = pointsForEvent;
+                    playerPointsSummary["pointsEarnedFrom" + key] =
+                      numberOfEventsScored * pointsForEvent;
 
                     totalPointsForWeek =
                       totalPointsForWeek + pointsEarnedFromEvent;
+                    console.log(
+                      "pointsEarnedFromEvent " +
+                        key +
+                        ": " +
+                        pointsEarnedFromEvent,
+                      " total points becomes ",
+                      totalPointsForWeek
+                    );
                   });
 
                   promises.push(promise);
                 });
+
                 resultsForPlayersSelected.push(playerPointsSummary);
               }
             }
