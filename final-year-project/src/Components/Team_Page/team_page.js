@@ -149,7 +149,7 @@ const Home = () => {
           </Dropdown>
 
           <div className="total-score">
-            Your score for the week: {overallPointsForWeekCombined}
+            Your total score for the week: {overallPointsForWeekCombined}
           </div>
         </div>
         <div className="players-container">

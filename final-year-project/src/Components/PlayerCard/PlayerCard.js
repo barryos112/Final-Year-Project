@@ -18,7 +18,11 @@ export const PlayerCard = ({
     console.log(stat);
     if (!stat.includes("name") && !stat.includes("playerId")) {
       if (stat.includes("eventSummary")) {
-        elements.push(<label>{statsForWeek[stat]}</label>);
+        elements.push(
+          <span>
+            <label>{statsForWeek[stat]}</label> <br></br>
+          </span>
+        );
       }
     }
   }
