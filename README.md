@@ -1,6 +1,6 @@
 # Final-Year-Project
 
-This was a year long college project that accounted for 20 credits for my final year in Computer Science and Business. 
+This was a year long college project that accounted for 20 credits for my final year in Computer Science and Business. I received a First Class Honours grade for the project.
 
 I made a prototype full stack web application to investigate fantasy sports users interest in innovative new forms of fantasy sports. 
 
